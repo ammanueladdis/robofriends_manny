@@ -11,44 +11,37 @@ import ErrorBoundary from "../components/ErrorBoundary";
 // import the CSS family with SEGA font for H1
 import "./App.css";
 
-import { setSearchField } from '../actions'
+import { setSearchField, requestRobots } from '../actions'
 
 //TODO: rememner sending and receiving state functions below - also different export at end of file
-
 const mapStateToProps = state => {
   return {
-    searchField: state.searchField
+    searchField: state.searchRobots.searchField,
+    robots: state.requestRobots.robots,
+    isPending: state.requestRobots.isPending,
+    error: state.requestRobots.error
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onSearchChange: (event) => dispatch(setSearchField(event.target.value))
+    onSearchChange: (event) => dispatch(setSearchField(event.target.value)),
+    onRequestRobots: () => dispatch(requestRobots()) 
   }
 }
 
 class App extends Component {
-  constructor() {
-    super();
-    this.state = {
-      robots: []
-    };
-  }
 
   componentDidMount() {
-    fetch("https://jsonplaceholder.typicode.com/users")
-      .then(response => response.json())
-      .then(users => this.setState({ robots: users }));
+    this.props.onRequestRobots();
   }
 
-
   render() {
-    const { robots } = this.state;
-    const { searchField, onSearchChange } = this.props;
+    const { searchField, onSearchChange, robots, isPending } = this.props;
     const filteredRobots = robots.filter(robot => {
       return robot.name.toLowerCase().includes(searchField.toLowerCase());
     })
-      return !robots.length ? 
+      return isPending ? 
       <h1>Loading... yikes duuuuuude!</h1> :
       (      
         <div className="tc">
@@ -65,4 +58,5 @@ class App extends Component {
   }
 }
 
+//TODO: how to export for React-redux. Higher=order components 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
