@@ -4,6 +4,7 @@ import CardList from "../components/CardList";
 import SearchBox from "../components/SearchBox";
 import Scroll from "../components/Scroll";
 import ErrorBoundary from "../components/ErrorBoundary";
+import Header from '../components/Header';
 
 // the actual list of robots imported below - commented out in mean-time
 //import { robots } from  './robotNames'
@@ -45,7 +46,7 @@ class App extends Component {
       <h1>Loading... yikes duuuuuude!</h1> :
       (      
         <div className="tc">
-          <h1 className="f1">Robo Friends - omg yay!</h1>
+          <Header />
           <SearchBox searchChange={onSearchChange} />
           <Scroll>
             <ErrorBoundary>
