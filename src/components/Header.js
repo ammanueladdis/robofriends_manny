@@ -10,8 +10,6 @@ class Header extends Component {
         <h1 className="f1">Robo Friends - omg yay!</h1>
         <CounterButton color={'red'} />
       </div>
-
-
     ) 
   }  
 }
