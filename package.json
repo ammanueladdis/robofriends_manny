@@ -2,7 +2,9 @@
   "name": "robofriends_manny",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://ammanueladdis.github.com/io/robofriends_deploy",
   "dependencies": {
+    "gh-pages": "^2.1.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-redux": "^7.1.0",
@@ -13,6 +15,9 @@
     "tachyons": "^4.11.1"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
+    "predeploy": "npm run build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
