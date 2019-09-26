@@ -11,7 +11,8 @@
     "redux": "^4.0.4",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.3.0",
-    "tachyons": "^4.11.1"
+    "tachyons": "^4.11.1",
+    "gh-pages": "^1.1.0"
   },
   "scripts": {
     "predeploy": "npm run build",
@@ -37,7 +38,7 @@
     ]
   },
   "devDependencies": {
-    "gh-pages": "^2.1.1",
-    "jest": "^24.9.0"
+    "enzyme": "^3.10.0",
+    "enzyme-adapter-react-16": "^1.14.0"
   }
 }
